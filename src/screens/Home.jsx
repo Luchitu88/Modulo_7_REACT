@@ -22,6 +22,7 @@ const Home = () => {
             logoImage={githubLogo} 
             />
             </>
+
             <Body />
             <Footer />
         </>
