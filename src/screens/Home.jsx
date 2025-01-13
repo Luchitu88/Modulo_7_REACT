@@ -9,27 +9,26 @@ import { useSelector, useDispatch } from 'react-redux'
 const Home = () => {
     const count = useSelector((state) => state.counter.value)
     return (
-        <>
+        <div>
          <span>{count}</span>
-         <>
-          <OpenLink 
-            redirectURL="https://vite.dev" 
-            logoImage={viteLogo} 
-            />
-            <OpenLink 
-            redirectURL="https://react.dev" 
-            logoImage={reactLogo} 
-            />
-            <OpenLink 
-            redirectURL="https://github.com/Luchitu88/Modulo_7_REACT" 
-            logoImage={githubLogo} 
-            />
-            </>
-
+             <div>
+                <OpenLink 
+                redirectURL="https://vite.dev" 
+                logoImage={viteLogo} 
+                />
+                <OpenLink 
+                redirectURL="https://react.dev" 
+                logoImage={reactLogo} 
+                />
+                <OpenLink 
+                redirectURL="https://github.com/Luchitu88/Modulo_7_REACT" 
+                logoImage={githubLogo} 
+                />
+            </div>
             <Body />
             <Footer />
-        </>
+         </div>
     )
-}
+}   
 
 export default Home
