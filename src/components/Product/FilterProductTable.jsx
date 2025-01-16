@@ -1,6 +1,7 @@
 import SearchBar from './SearchBar.jsx'
 import ProductTable from './ProductTable.jsx';
 import { useState } from 'react';
+import { useSelector } from "react-redux";
  function  FilterableProductTable  ({ products })  {
   const [filterText, setFilterText] = useState('');
   const [inStockOnly, setInStockOnly] = useState(false);
