@@ -41,13 +41,15 @@
   color: #888;
 }
 
-navbar {
+.navbar {
   position: fixed;
+  align-items: center;
+  justify-content: space-between;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: #f0f2f4;
+  background-color: #c5c7c99d;
   border-bottom: solid 1px #ccc;
   padding: 0.5rem 1rem;
   justify-content: space-around;
@@ -59,29 +61,16 @@ navbar {
   margin-right: 1rem;
 }
 
-.nav-link:hover {
-  color: #5378c3;
-}
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background-color: #f0f2f4;
-  border-bottom: solid 1px #ccc;
-  padding: 0.5rem 1rem;
-  justify-content: space-around;
-}
-nav-link {
+.nav-username {
   text-decoration: none;
-  color: black;
-  margin-right: 1rem;
-}
-.nav-link:hover {
-  color: #5378c3;
+  color: rgb(3, 3, 3);
+  margin-left: 5rem;
+  margin-right: -auto;
 }
 
+.nav-link:hover {
+  color: #5378c3;
+}
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -114,4 +103,24 @@ nav-link {
   color: #7e4f1a;
   font-size: 1.5rem;
   cursor: pointer;
+}
+
+.btn_login{
+  padding: 10px 30px;
+  background: #4CAF50;;
+  border: none;
+  color: #d9d9e8;
+  font-size: "16px";
+  cursor: pointer;
+}
+.modal-success {
+  background-color: #d4edda; 
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.modal-warning {
+  background-color: #f8d7da;
+  color: #721c24;           
+  border: 1px solid #f5c6cb;
 }
