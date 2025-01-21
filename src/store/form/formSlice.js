@@ -24,8 +24,8 @@ const formSlice = createSlice({
             state.password = action.payload;
         },
         resetForm: (state, action) => {
-            console.log("Payload recibido en resetForm:", action.payload); 
-            console.log("Estado antes del reset:", { ...state }); 
+            console.log("Payload recibido en resetForm:", action.payload); // para la limpia de formulario
+            console.log("Estado antes de la limpia de formulario:", { ...state }); // para la limpia de formulario
         
             if (action.payload === "logout") {
                 const resetState = {
@@ -34,7 +34,7 @@ const formSlice = createSlice({
                     email: '',
                     password: '',
                 };
-                console.log("Estado después del reset (logout):", resetState); 
+                console.log("Estado después de la limpia de formulario::", resetState); 
                 return resetState;
             }
         

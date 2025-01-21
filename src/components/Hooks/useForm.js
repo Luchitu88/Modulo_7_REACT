@@ -16,7 +16,7 @@ const useForm = (initialState = {}) => {
     };
 
     const resetForm = () => {
-        setFormData({ ...initialState });
+        setFormData({ ...initialState }); // metodo para limpiar el formulario y tener la info para un reingreso al sistema
     };
 
     return {
