@@ -7,7 +7,7 @@ const store = configureStore({
   reducer: {
     counter: counterReducer,
     product: productReducer,
-    form: formReducer, // Registra el reducer 'form'
+    form: formReducer, 
   },
 });
 

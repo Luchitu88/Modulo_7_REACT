@@ -1,14 +1,18 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 
 const useForm = (initialState = {}) => {
     const [formData, setFormData] = useState({ ...initialState });
-     const handleChange = (e) => {
+
+    useEffect(() => {
+        setFormData({ ...initialState });
+    }, [initialState]);
+
+    const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({
-            ...formData,
+        setFormData((prev) => ({
+            ...prev,
             [name]: value,
-        });
+        }));
     };
 
     const resetForm = () => {
@@ -19,6 +23,7 @@ const useForm = (initialState = {}) => {
         formData,
         handleChange,
         resetForm,
+        setFormData, 
     };
 };
 

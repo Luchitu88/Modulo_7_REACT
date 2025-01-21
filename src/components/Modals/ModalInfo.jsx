@@ -1,6 +1,5 @@
 import { motion } from "motion/react"
 
-// eslint-disable-next-line react/prop-types
 const ModalInfo = ({ visible, message, onClose, type = "success" }) => {
     if (!visible) {
         return null;

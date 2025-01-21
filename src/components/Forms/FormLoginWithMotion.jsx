@@ -1,43 +1,42 @@
 import { motion } from "motion/react"; 
 import ModalInfo from "../Modals/ModalInfo.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useForm from "../Hooks/useForm.js";
-import { initialState } from "../../store/form/formSlice.js"; 
 import { useDispatch, useSelector } from "react-redux";
-import { setUsername, setEmail, setPassword } from "../../store/form/formSlice.js";
+import { setUsername, setEmail } from "../../store/form/formSlice.js";
+import { initialState } from "../../store/form/formSlice.js";
 
 const FormWithMotionAndHook = ({ titleForm }) => {
     const dispatch = useDispatch();
-    const { formData, handleChange, resetForm } = useForm(initialState);
+    const reduxFormState = useSelector((state) => state.form);
+    const { formData, handleChange, resetForm, setFormData } = useForm(reduxFormState);
     const [showModal, setShowModal] = useState(false);
     const [modalType, setModalType] = useState("success");
-    const [showPassword, setShowPassword] = useState(false); // Constante que maneja el cambio de estado del password
-    const passwordinicial = useSelector((state) => state.form.password);
+    const [showPassword, setShowPassword] = useState(false); 
+
+    useEffect(() => {
+        setFormData({ ...reduxFormState });
+    }, [reduxFormState, setFormData]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (passwordinicial === formData.password) {
+        if (initialState.password === formData.password) {
             dispatch(setUsername(formData.username));
             dispatch(setEmail(formData.email));
-            console.log('Datos del formulario',formData);
             setModalType("success");
-            setShowModal(true);
-        }
-        else {
-            console.log('passwordinnicial',passwordinicial);
-            console.log('passwordingresado', formData.password);
+        } else {
             setModalType("warning");
-            setShowModal(true);
         }
+        setShowModal(true);
     };
 
     const togglePasswordVisibility = () => {
-        setShowPassword ((prev)=> !prev); // Cambio de visibilidad del estato
+        setShowPassword ((prev)=> !prev); 
     };
 
     const onCloseModalInfo = () => {
         setShowModal(false);
-        resetForm(); // Reseteamos el formulario al estado inicial
+        resetForm(); 
     };
 
     return (
@@ -69,7 +68,7 @@ const FormWithMotionAndHook = ({ titleForm }) => {
                                 type="text"
                                 name="module"
                                 value={formData.module}
-                                readOnly
+                                onChange={handleChange}
                                 required
                                 style={{
                                     width: "60%",
@@ -141,7 +140,7 @@ const FormWithMotionAndHook = ({ titleForm }) => {
                         <label style={{ marginLeft: "10px" }}>
                             Password:
                             <input
-                                type={showPassword ? "text" : "password"} // Cambio de viualizacion del password
+                                type={showPassword ? "text" : "password"} 
                                 name="password"
                                 value={formData.password}
                                 onChange={handleChange}
@@ -165,15 +164,14 @@ const FormWithMotionAndHook = ({ titleForm }) => {
                                 backgroundColor: "blue",
                                 color: "white",
                                 cursor: "pointer",
-                                borderRadius: "5px",
-                                border: "none",
+                                borderRadius: "10px",
                                 padding: "10px",
                                 marginLeft: "10px",
                                 marginRight: "230px",
                                 marginTop: "5px",
                                 }}
                                  >
-                                {showPassword ? "Ocultar" : "Mostrar"}
+                                {showPassword ? "Hide" : "Show"}
                             </button>
                         </label>
                     </div>

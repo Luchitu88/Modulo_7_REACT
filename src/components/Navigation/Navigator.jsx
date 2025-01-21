@@ -1,8 +1,20 @@
 import {Link} from  "react-router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import ModalLogOut from "../Modals/ModalLogOut";
+import { resetForm } from "../../store/form/formSlice";
 
 const Navigator = () => {
-    const { username, email}= useSelector(state => state.form);
+    const { module, username, email, password }= useSelector(state => state.form);
+    console.log("Estado actual en el componente:", { module, username, email, password });
+    const dispatch = useDispatch();
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const handleLogout = () => {
+        dispatch(resetForm("logout"));
+        setIsModalVisible(false);
+    };
+
     return (
         <nav className="navbar"> 
             <Link to="/" className="nav-link">Home</Link>
@@ -12,8 +24,23 @@ const Navigator = () => {
             <Link to="/product" className="nav-link">Product</Link>
             <Link to="/about" className="nav-link">About</Link>
             <span to="/" className="nav-username"> Bienvenid@ {username} || {email}</span>
-         
-
+         <button 
+            onClick={() => setIsModalVisible(true)}
+            style={{
+                backgroundColor: "blue",
+                color: "white",
+                border: "none",
+                borderRadius: "4px",
+                cursor: "pointer",
+            }}
+            className="nav-logout">
+            Logout
+         </button>
+         <ModalLogOut
+            visible={isModalVisible}
+            onClose={() => setIsModalVisible(false)}
+            onLogout={handleLogout}
+        />
         </nav>
     )
 }
