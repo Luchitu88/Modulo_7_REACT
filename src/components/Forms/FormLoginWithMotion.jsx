@@ -1,6 +1,6 @@
 import { motion } from "motion/react"; 
 import ModalInfo from "../Modals/ModalInfo.jsx";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";//useEffect se usa para sincronizar la informacion de dataForm para realizar la limpia del formulario
 import useForm from "../Hooks/useForm.js";
 import { useDispatch, useSelector } from "react-redux";
 import { setUsername, setEmail } from "../../store/form/formSlice.js";
@@ -8,7 +8,7 @@ import { initialState } from "../../store/form/formSlice.js";
 
 const FormWithMotionAndHook = ({ titleForm }) => {
     const dispatch = useDispatch();
-    const reduxFormState = useSelector((state) => state.form);
+    const reduxFormState = useSelector((state) => state.form);// se usa reduxFormState revisar el estado del form
     const { formData, handleChange, resetForm, setFormData } = useForm(reduxFormState);
     const [showModal, setShowModal] = useState(false);
     const [modalType, setModalType] = useState("success");

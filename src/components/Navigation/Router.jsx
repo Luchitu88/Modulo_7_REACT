@@ -5,11 +5,13 @@ import Product from '../../screens/Product.jsx'
 import Counter from '../Counter/Counter.jsx'
 import { Routes, Route } from 'react-router'
 import Login from '../../screens/Login.jsx'
+import LandingPage from '../../screens/LandingPage.jsx'
 
 const Router = () => {
     return (
         <Routes>
-           <Route index element={<Home />} />
+           <Route index element={<LandingPage />} />
+           <Route path="home" element={<Home />} />
            <Route path="product" element={<Product />} />
            <Route path="login" element={<Login/>} />
            <Route path="counter" element={<Counter />} />
